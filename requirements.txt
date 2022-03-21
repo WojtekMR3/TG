@@ -87,7 +87,6 @@ text-unidecode==1.3
 tibia.py==5.2.1
 toposort==1.7
 Twisted==20.3.0
-unattended-upgrades==0.1
 urllib3==1.26.5
 virtualenv==20.13.0
 wadllib==1.3.5
