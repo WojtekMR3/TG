@@ -154,7 +154,7 @@ start_time = time.time()
 
 st = datetime.now()
 print(st, "get_hs_as fnc start")
-#get_hs_as()
+get_hs_as()
 # char_url_list = char_urls_list(lmain)
 
 # while len(char_url_list) > 0:
