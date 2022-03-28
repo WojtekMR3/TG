@@ -8,4 +8,5 @@ def start():
   #scheduler.add_job(schedule_api, 'cron', second=0)
   #scheduler.add_job(get_hs_as, 'cron', second=5)
   #scheduler.add_job(get_hs_as, 'cron', minute=50)
+  scheduler.add_job(get_hs_as, 'cron', hour=1)
   scheduler.start()
