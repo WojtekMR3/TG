@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from jobs.tbapi import get_hs_as
+#from jobs.tbapi import get_hs_as
 
 sched = BlockingScheduler()
 
