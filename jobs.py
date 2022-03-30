@@ -1,5 +1,5 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from helper import your_function_a, your_function_b
+from tbapi.py import get_hs_as
 
 sched = BlockingScheduler()
 
