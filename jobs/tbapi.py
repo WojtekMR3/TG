@@ -77,8 +77,8 @@ def create_session():
     connector = aiohttp.TCPConnector(limit=10, limit_per_host=10, force_close=True)
     timeout = aiohttp.ClientTimeout(total=60*60)
     headers = {
-        'User-Agent': 'Tibiagraphs',
-        'Accept-Encoding': "deflate, gzip"
+        "User-Agent": "Tibiagraphs",
+        "Accept-Encoding": "gzip, deflate"
     }
     session = aiohttp.ClientSession(connector=connector, timeout=timeout, headers=headers, trust_env=True)
     return session
@@ -105,13 +105,15 @@ async def fetch_html(session, url):
 
 def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
-    headers = {
-        "User-Agent": "Tibia.py/%s (+https://github.com/Galarzaa90/tibia.py)",
-        "Accept-Encoding": "gzip, deflate"
-    }
-    r = requests.get(url, headers=headers)
+    url_list = [url]
+    cnt = asyncio.run(fetch_htmls(url_list))
+    print(cnt)
+    # headers = {
+    #     "User-Agent": "Tibia.py/%s (+https://github.com/Galarzaa90/tibia.py)",
+    #     "Accept-Encoding": "gzip, deflate"
+    # }
+    # r = requests.get(url, headers=headers)
     content = r.text
-    print(content)
     worlds = tibiapy.WorldEntry.list_from_content(content)
     worlds = list(filter(blacklisted_worlds, worlds))
     # get number of hs pages for each world
