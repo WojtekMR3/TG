@@ -1,10 +1,10 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 #from jobs.tbapi import get_hs_as
 
-sched = BlockingScheduler()
-
-@sched.scheduled_job('interval', minutes='30')
 def print_data():
 	print("Have a good day!")
+
+sched = BlockingScheduler()
+scheduler.add_job(get_hs_as, 'cron', second=30)
 
 sched.start()
