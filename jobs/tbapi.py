@@ -113,7 +113,8 @@ def prep_url_list():
     #     "Accept-Encoding": "gzip, deflate"
     # }
     # r = requests.get(url, headers=headers)
-    content = r.text
+    # content = r.text
+    content = cnt
     worlds = tibiapy.WorldEntry.list_from_content(content)
     worlds = list(filter(blacklisted_worlds, worlds))
     # get number of hs pages for each world
