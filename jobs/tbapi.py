@@ -106,7 +106,7 @@ async def fetch_html(session, url):
 def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
     headers = {
-        'User-Agent': 'Tibiagraphs',
+        'User-Agent': "Tibia.py/%s (+https://github.com/Galarzaa90/tibia.py)"
         'Accept-Encoding': "gzip, deflate"
     }
     r = requests.get(url, headers=headers)
