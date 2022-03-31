@@ -1,6 +1,6 @@
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
-from .tbapi import get_hs_as
+from .tbapi import get_hs_as, get_character
 
 def start():
   scheduler = BackgroundScheduler()
