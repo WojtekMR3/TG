@@ -105,7 +105,11 @@ async def fetch_html(session, url):
 
 def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
-    r = requests.get(url, headers={'User-Agent': 'Tibiagraphs', 'Accept-Encoding': "deflate, gzip"})
+    headers = {
+        'User-Agent': 'Tibiagraphs',
+        'Accept-Encoding': "gzip, deflate"
+    }
+    r = requests.get(url, headers=headers)
     content = r.text
     print(content)
     worlds = tibiapy.WorldEntry.list_from_content(content)
