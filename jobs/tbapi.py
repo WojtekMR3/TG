@@ -108,7 +108,8 @@ def prep_url_list():
     url_list = []
     url_list.append(url)
     cnt = asyncio.run(fetch_htmls(url_list))
-    print(cnt)
+    for item in cnt:
+        print(cnt)
     # headers = {
     #     "User-Agent": "Tibia.py/%s (+https://github.com/Galarzaa90/tibia.py)",
     #     "Accept-Encoding": "gzip, deflate"
