@@ -78,6 +78,7 @@ def create_session():
     timeout = aiohttp.ClientTimeout(total=60*60)
     headers = {
         'User-Agent': 'Tibiagraphs',
+        'Accept-Encoding': "deflate, gzip"
     }
     session = aiohttp.ClientSession(connector=connector, timeout=timeout, headers=headers, trust_env=True)
     return session
@@ -104,7 +105,7 @@ async def fetch_html(session, url):
 
 def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
-    r = requests.get(url)
+    r = requests.get(url, headers={'User-Agent': 'Tibiagraphs', 'Accept-Encoding': "deflate, gzip"})
     content = r.text
     print(content)
     worlds = tibiapy.WorldEntry.list_from_content(content)
