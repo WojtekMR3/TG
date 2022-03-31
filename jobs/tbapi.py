@@ -105,7 +105,8 @@ async def fetch_html(session, url):
 
 def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
-    url_list = [url]
+    url_list = []
+    url_list.append(url)
     cnt = asyncio.run(fetch_htmls(url_list))
     print(cnt)
     # headers = {
