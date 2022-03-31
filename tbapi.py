@@ -106,6 +106,7 @@ def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
     r = requests.get(url)
     content = r.text
+    print(content)
     worlds = tibiapy.WorldEntry.list_from_content(content)
     worlds = list(filter(blacklisted_worlds, worlds))
     # get number of hs pages for each world
