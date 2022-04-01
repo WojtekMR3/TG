@@ -91,6 +91,7 @@ async def fetch_html(session, url):
                 await asyncio.sleep(1/20)
                 continue
             content = await resp.text()
+            print(content)
             return content
       except (
         aiohttp.ClientConnectionError,
