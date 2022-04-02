@@ -22,7 +22,7 @@ def get_character():
     return character
 
 async def mainRq():
-    async with aiohttp.ClientSession() as session:
+    async with create_session() as session:
         url = tibiapy.WorldEntry.get_list_url()
         async with session.get(url) as resp:
             print(resp.status)
