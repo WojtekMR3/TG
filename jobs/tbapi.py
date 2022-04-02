@@ -21,6 +21,13 @@ def get_character():
     print(character)
     return character
 
+async def mainRq():
+    async with aiohttp.ClientSession() as session:
+        url = tibiapy.WorldEntry.get_list_url()
+        async with session.get(url) as resp:
+            print(resp.status)
+            print(await resp.text())
+
 async def get_character_async(session, url):
     for x in range(1, 11):
         try:
@@ -105,6 +112,7 @@ async def fetch_html(session, url):
 
 def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
+    asyncio.run(mainRq)
     # url_list = []
     # url_list.append(url)
     # cnt = asyncio.run(fetch_htmls(url_list))
@@ -116,7 +124,6 @@ def prep_url_list():
     }
     r = requests.get(url, headers=headers)
     content = r.text
-    print(content)
     worlds = tibiapy.WorldEntry.list_from_content(content)
     worlds = list(filter(blacklisted_worlds, worlds))
     # get number of hs pages for each world
