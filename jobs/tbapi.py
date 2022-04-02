@@ -91,7 +91,6 @@ async def fetch_html(session, url):
                 await asyncio.sleep(1/20)
                 continue
             content = await resp.text()
-            print(content)
             return content
       except (
         aiohttp.ClientConnectionError,
@@ -106,18 +105,17 @@ async def fetch_html(session, url):
 
 def prep_url_list():
     url = tibiapy.WorldEntry.get_list_url()
-    url_list = []
-    url_list.append(url)
-    cnt = asyncio.run(fetch_htmls(url_list))
-    for item in cnt:
-        print(cnt)
-    # headers = {
-    #     "User-Agent": "Tibia.py/%s (+https://github.com/Galarzaa90/tibia.py)",
-    #     "Accept-Encoding": "gzip, deflate"
-    # }
-    # r = requests.get(url, headers=headers)
-    # content = r.text
-    content = cnt
+    # url_list = []
+    # url_list.append(url)
+    # cnt = asyncio.run(fetch_htmls(url_list))
+    # for item in cnt:
+    #     print(cnt)
+    headers = {
+        "User-Agent": "Tibia.py/%s (+https://github.com/Galarzaa90/tibia.py)",
+        "Accept-Encoding": "gzip, deflate"
+    }
+    r = requests.get(url, headers=headers)
+    content = r.text
     worlds = tibiapy.WorldEntry.list_from_content(content)
     worlds = list(filter(blacklisted_worlds, worlds))
     # get number of hs pages for each world
